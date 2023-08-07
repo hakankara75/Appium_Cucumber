@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class ConfigReader {
 
-    public static Properties properties;
+    private static Properties properties;
     static {
         String path="deviceConfig.properties";
         try {

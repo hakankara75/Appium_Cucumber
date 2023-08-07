@@ -1,12 +1,11 @@
-package stepDefinitions;
+package hook;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import org.junit.After;
-import org.junit.Before;
+import io.cucumber.java.After;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.devtools.v85.network.model.DataReceived;
 import utilities.Driver;
 
 import java.io.IOException;
@@ -16,9 +15,9 @@ public class Hooks {
 
     private AppiumDriverLocalService appiumServer=AppiumDriverLocalService.buildDefaultService();
     final Runtime runtime=Runtime.getRuntime();
-    @Before
+  @Before
     public void setUp()  {
-        forceStopAppiumServer();
+         forceStopAppiumServer();
         appiumServer.start();
     }
 
@@ -35,8 +34,8 @@ public class Hooks {
 
     public void forceStopAppiumServer(){
         try {
-        runtime.exec("killall node");
-        runtime.exec("pkill -i xcodebuild");
+        runtime.exec("taskkill /F /IM node.exe");
+        runtime.exec("taskkill /F /IM cmd.exe");
             System.out.println("kill all nodes");
         }catch (Exception e) {
         e.printStackTrace();

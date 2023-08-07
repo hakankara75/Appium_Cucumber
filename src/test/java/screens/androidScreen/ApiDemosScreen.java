@@ -13,7 +13,7 @@ public class ApiDemosScreen {
 
     public ApiDemosScreen () {
         try {
-            PageFactory.initElements(Driver.getAppiumDriver(), this);
+            PageFactory.initElements(new AppiumFieldDecorator(Driver.getAppiumDriver()),this);
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -38,4 +38,10 @@ public class ApiDemosScreen {
     public WebElement wifiSettingsTextBox;
     @FindBy(id = "android:id/button1")
     public WebElement okButton;
+    @FindBy(xpath = "//android.widget.TextView[@text='9. Switch']")
+    public WebElement switchButton;
+    @FindBy(xpath = "//android.widget.CheckBox[@resource-id='android:id/checkbox']")
+    public WebElement checkBox;
+    @FindBy(xpath = "//android.widget.Switch[@text='ON']")
+    public WebElement switchPreference;
 }
