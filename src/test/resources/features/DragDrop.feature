@@ -1,3 +1,4 @@
+@dragDrop
 Feature: ApiDemos touch action
   Scenario: Drag and Drop
     Given Application yuklendi
