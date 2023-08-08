@@ -11,7 +11,6 @@ import static org.junit.Assert.*;
 
 public class ApiDemosSteps extends ReusableMethods {
 
-    ApiDemosScreen api=new ApiDemosScreen();
     @Given("Application yuklendi")
     public void application_yuklendi() throws MalformedURLException, InterruptedException {
         Driver.getAppiumDriver();

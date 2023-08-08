@@ -44,4 +44,12 @@ public class ApiDemosScreen {
     public WebElement checkBox;
     @FindBy(xpath = "//android.widget.Switch[@text='ON']")
     public WebElement switchPreference;
+    @FindBy(xpath = "//android.widget.TextView[@text='Views']")
+    public WebElement viewLink;
+    @FindBy(xpath = "//android.widget.TextView[@text='Drag and Drop']")
+    public WebElement dragAndDrop;
+    @FindBy(id = "com.touchboarder.android.api.demos:id/drag_dot_1")
+    public WebElement dragAndDropOne;
+    @FindBy(id = "com.touchboarder.android.api.demos:id/drag_dot_2")
+    public WebElement dragAndDropTwo;
 }

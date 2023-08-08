@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import screens.androidScreen.ApiDemosScreen;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
@@ -13,6 +14,7 @@ import java.util.List;
 
 
 public class ReusableMethods {
+    static protected ApiDemosScreen api=new ApiDemosScreen();
     static List<WebElement> mobileElementList;
     static WebDriverWait wait;
     public static void tapOnElementWithText(String text) throws MalformedURLException {
