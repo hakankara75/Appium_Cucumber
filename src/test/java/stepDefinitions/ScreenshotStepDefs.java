@@ -13,7 +13,7 @@ import java.util.Date;
 
 public class ScreenshotStepDefs {
     @Then("screenshot al")
-    public void screenshot_al() throws IOException {
+    public void screenshot_al() throws IOException, InterruptedException {
         //after verification take screenshot
 //       I use this code to take a screenshot when needed
         // naming the screenshot with the current date to avoid duplication

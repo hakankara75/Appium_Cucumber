@@ -27,6 +27,7 @@ public class ViewsSteps extends ReusableMethods {
     @When("Kullanici birinci topu ikinci topun ustune tikladi")
     public void kullaniciBirinciTopuIkinciTopunUstuneTikladi() {
 
+
     }
     @Then("Kullanici dorduncu topu gordu")
     public void kullaniciDorduncuTopuGordu() {

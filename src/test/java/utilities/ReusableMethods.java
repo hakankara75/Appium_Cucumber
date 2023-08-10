@@ -17,7 +17,7 @@ public class ReusableMethods {
     static protected ApiDemosScreen api=new ApiDemosScreen();
     static List<WebElement> mobileElementList;
     static WebDriverWait wait;
-    public static void tapOnElementWithText(String text) throws MalformedURLException {
+    public static void tapOnElementWithText(String text) throws MalformedURLException, InterruptedException {
         mobileElementList = Driver.getAppiumDriver().findElements(By.xpath("android.widget.TextView"));
         for (WebElement page: mobileElementList) {
             if (page.getText().equals(text)){
@@ -39,7 +39,7 @@ public class ReusableMethods {
     }
 
 
-    public static boolean isElementPresent(String text) throws MalformedURLException {
+    public static boolean isElementPresent(String text) throws MalformedURLException, InterruptedException {
         boolean elementFound = false;
         mobileElementList = Driver.getAppiumDriver().findElements(By.xpath("//android.widget.TextView[@text='" + text + "']"));
         for (WebElement el : mobileElementList) {
@@ -64,13 +64,13 @@ public class ReusableMethods {
     public static void tapOn(WebElement element) {
         try {
             waitToBeClickable(element, 10);
-        } catch (MalformedURLException e) {
+        } catch (MalformedURLException | InterruptedException e) {
             throw new RuntimeException(e);
         }
         element.click();
     }
 
-    public static void enterText(WebElement element, String text) throws MalformedURLException {
+    public static void enterText(WebElement element, String text) throws MalformedURLException, InterruptedException {
         waitToBeClickable(element, 10);
         element.sendKeys(text);
     }
@@ -78,7 +78,7 @@ public class ReusableMethods {
     public static void enterText(WebElement element, String text, boolean needClear) {
         try {
             waitToBeClickable(element, 10);
-        } catch (MalformedURLException e) {
+        } catch (MalformedURLException | InterruptedException e) {
             throw new RuntimeException(e);
         }
         if (needClear) {
@@ -91,7 +91,7 @@ public class ReusableMethods {
         boolean elementFound = false;
         try {
             waitToBeVisible(mobileElement, 10);
-        } catch (MalformedURLException e) {
+        } catch (MalformedURLException | InterruptedException e) {
             throw new RuntimeException(e);
         }
         if (mobileElement.isDisplayed()) {
@@ -100,17 +100,17 @@ public class ReusableMethods {
         return elementFound;
     }
 
-    public static void waitToBeVisible(WebElement element, int timeout) throws MalformedURLException {
+    public static void waitToBeVisible(WebElement element, int timeout) throws MalformedURLException, InterruptedException {
         wait= new WebDriverWait(Driver.getAppiumDriver(), Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public static void waitToBeClickable(WebElement element, int timeout) throws MalformedURLException {
+    public static void waitToBeClickable(WebElement element, int timeout) throws MalformedURLException, InterruptedException {
         wait = new WebDriverWait(Driver.getAppiumDriver(), Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public static void scrollWithUiScrollable(String elementText) throws MalformedURLException {
+    public static void scrollWithUiScrollable(String elementText) throws MalformedURLException, InterruptedException {
         AndroidDriver driver = (AndroidDriver) Driver.getAppiumDriver();
         driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+elementText+"\"))"));
         tapOn(driver.findElement(By.xpath("//android.widget.TextView[@text='" + elementText + "']")));
