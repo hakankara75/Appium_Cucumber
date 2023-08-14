@@ -1,7 +1,6 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.*;
-import screens.androidScreen.ApiDemosScreen;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
@@ -14,9 +13,11 @@ public class ApiDemosSteps extends ReusableMethods {
     @Given("Application yuklendi")
     public void application_yuklendi() throws MalformedURLException, InterruptedException {
         Driver.getAppiumDriver();
+
     }
     @When("Kullanici anasayfaya geldi")
-    public void kullanici_anasayfaya_geldi() {
+    public void kullanici_anasayfaya_geldi() throws MalformedURLException, InterruptedException {
+     Thread.sleep(30);
      assertTrue(isElementPresent(api.apiTitle));
     }
     @When("Kullanici Api Demos butonuna tikladi")

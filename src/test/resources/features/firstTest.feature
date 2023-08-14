@@ -1,3 +1,4 @@
+@firstTest
 Feature: ApiDemos test
   Scenario: ApiDemos text boxa data gonderme
     Given Application yuklendi

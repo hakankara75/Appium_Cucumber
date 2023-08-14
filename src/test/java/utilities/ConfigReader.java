@@ -13,6 +13,7 @@ public class ConfigReader {
             FileInputStream file = new FileInputStream(path);
             properties=new Properties();
             properties.load(file);
+            file.close();
         }catch (Exception e) {
             System.out.println("Configuration file is not exist");
         }

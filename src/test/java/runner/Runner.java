@@ -6,10 +6,13 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/default-cucumber-report"},
+        plugin = {"pretty",
+                "json:target/cucumber.json",
+                "utilities.formatter.PrettyReports:target/cucumber-pretty-reports"
+        },
         features = "src/test/resources/features",
         glue = "stepDefinitions",
-        tags = "@dragDrop",
+        tags = "@firstTest",
         dryRun = false
 )
 public class Runner {

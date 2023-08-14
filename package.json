@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "npmlog": "^7.0.1"
+  }
+}
