@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "stepDefinitions",
-        tags = "@firstTest",
+        tags = "@HepsiBurada",
         dryRun = false
 )
 public class Runner {

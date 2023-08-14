@@ -1,13 +1,16 @@
 package stepDefinitions;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServerHasNotBeenStartedLocallyException;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.After;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import utilities.Driver;
 import java.io.IOException;
+import java.time.Duration;
+
 
 
 public class Hooks {
@@ -15,9 +18,9 @@ public class Hooks {
     public static AppiumDriverLocalService appiumServer = AppiumDriverLocalService.buildDefaultService();
     final Runtime runtime = Runtime.getRuntime();
 
-    @Before
-    public void setUp() throws InterruptedException {
-        appiumServer.start();
+//    @Before
+//    public void setUp() throws InterruptedException {
+//        appiumServer.start();
 //        //it starts appium server
 //        forceStopAppiumServer();
 //        AppiumServiceBuilder builder = new AppiumServiceBuilder();
@@ -37,20 +40,19 @@ public class Hooks {
 //            throw new RuntimeException(e);
 //        }
 //        Thread.sleep(8000);
-//
-//        getAppiumDriver();
+
+       // getAppiumDriver();
 
 
-    }
+   // }
 
-    @After
-    public void tearDown(Scenario scenario) throws InterruptedException {
-        final byte[] screenshot=((TakesScreenshot) Driver.getAppiumDriver()).getScreenshotAs(OutputType.BYTES);
-        if (scenario.isFailed()) {
-            scenario.attach(screenshot, "image/png", "screenshots");
-        }
-
-    }
+//    @After
+//    public void tearDown(Scenario scenario) throws InterruptedException {
+//        final byte[] screenshot=((TakesScreenshot) getAppiumDriver()).getScreenshotAs(OutputType.BYTES);
+//        if (scenario.isFailed()) {
+//            scenario.attach(screenshot, "image/png", "screenshots");
+//        }
+//    }
 
     public void forceStopAppiumServer() {
 

@@ -10,7 +10,7 @@ public class ApiDemosScreen {
 
     public ApiDemosScreen () {
         try {
-            PageFactory.initElements(new AppiumFieldDecorator(Driver.getAppiumDriver()),this);
+            PageFactory.initElements(new AppiumFieldDecorator(Driver.getDriver()),this);
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
