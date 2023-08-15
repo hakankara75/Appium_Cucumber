@@ -16,14 +16,13 @@ import static org.junit.Assert.assertTrue;
 public class Driver {
 
     private static UiAutomator2Options options;
-    public static AppiumDriver appiumDriver;
     private static AppiumDriver driver;
 
     public static AppiumDriver getDriver() {
 
             if (driver == null) {
                 switch (ConfigReader.getProperty("platformName")) {
-                    case "ANDROID":
+                    case "Android":
                         //UiAutomator2Options objesi olustur
                         options = new UiAutomator2Options();
                         //Uygulama paketi adini ayarlar
@@ -86,9 +85,9 @@ public class Driver {
 
     }
     public static void quitAppiumDriver() {
-        if (appiumDriver != null) {
-            appiumDriver.quit();
-            appiumDriver = null;
+        if (driver != null) {
+            driver.quit();
+            driver = null;
         }
 
     }

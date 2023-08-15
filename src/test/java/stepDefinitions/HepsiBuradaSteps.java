@@ -14,6 +14,7 @@ public class HepsiBuradaSteps {
 
     @When("Kategoriler linki tiklandi")
     public void kategorilerLinkiTiklandi() {
+        System.out.println("kategriler linki tiklandi");
             api.kategoriler.click();
         }
 
