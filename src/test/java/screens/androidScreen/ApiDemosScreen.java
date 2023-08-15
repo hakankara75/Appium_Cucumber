@@ -6,17 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.time.Duration;
+
 public class ApiDemosScreen {
 
-    public ApiDemosScreen () {
-        try {
-            PageFactory.initElements(new AppiumFieldDecorator(Driver.getDriver()),this);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
+    public ApiDemosScreen()  {
+        PageFactory.initElements(new AppiumFieldDecorator(Driver.getDriver(), Duration.ofSeconds(30)),this);
     }
-
     @FindBy(xpath = "//android.widget.TextView[contains(@text='API')]")
     public WebElement apiTitle;
     @FindBy(xpath = "//android.widget.TextView[contains(@text='Preference')]")

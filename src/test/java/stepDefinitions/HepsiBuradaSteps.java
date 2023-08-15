@@ -12,9 +12,9 @@ public class HepsiBuradaSteps {
         Driver.getDriver();
     }
 
-    @When("IlkAyaOzel linki tiklandi")
-    public void ılk_aya_ozel_linki_tiklandi() {
-        api.ilkAyaOzel.click();
-    }
+    @When("Kategoriler linki tiklandi")
+    public void kategorilerLinkiTiklandi() {
+            api.kategoriler.click();
+        }
 
-}
+    }
