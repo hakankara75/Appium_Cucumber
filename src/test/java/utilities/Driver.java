@@ -2,6 +2,7 @@ package utilities;
 
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 
 import java.io.IOException;
@@ -35,6 +36,7 @@ public class Driver {
                         options.setNoReset(true);
                         //yeni komut zaman asimini ayarla
                         options.setNewCommandTimeout(Duration.ofSeconds(20));
+                        options.setCapability("shouldTerminateApp", true);//aplication kapatmak icin
                         break;
                     case "IOS":
                         //IOS icin konfigurasyonlar buraya yazilir
@@ -52,7 +54,7 @@ public class Driver {
                 do {
                     try {
                         System.out.println("Deneme #" + (attempt + 1));
-                        driver = new AppiumDriver(new URL("http://127.0.0.1:4723"), options);
+                        driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
                         driverCreated = true;
                         System.out.println("Android baglandi, driver atandi");
                     } catch (MalformedURLException e) {
