@@ -86,12 +86,6 @@ public class Driver {
 
 
     }
-    public static void quitAppiumDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
-        }
 
-    }
 }
 
