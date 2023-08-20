@@ -17,7 +17,7 @@ import static org.junit.Assert.assertTrue;
 public class Driver {
 
     private static UiAutomator2Options options;
-    private static AppiumDriver driver;
+    public static AppiumDriver driver;
 
     public static AppiumDriver getDriver() {
 
@@ -27,11 +27,11 @@ public class Driver {
                         //UiAutomator2Options objesi olustur
                         options = new UiAutomator2Options();
                         //Uygulama paketi adini ayarlar
-                        options.setAppPackage("com.pozitron.hepsiburada");
+                        options.setAppPackage(ConfigReader.getProperty("setAppPackage"));
                         //Uygulama aktivite adini ayarla
-                        options.setAppActivity("com.hepsiburada.ui.home.BottomNavigationActivity");
+                        options.setAppActivity(ConfigReader.getProperty("setAppActivity"));
                         //Cihaz UDID'sini ayarla
-                        options.setUdid("R68T2013J2Y"); //bu kodu cmd'de "adb devices" yazarak buluruz
+                        options.setUdid(ConfigReader.getProperty("setUdid")); //bu kodu cmd'de "adb devices" yazarak buluruz
                         //sifirlama islemini kapat
                         options.setNoReset(true);
                         //yeni komut zaman asimini ayarla

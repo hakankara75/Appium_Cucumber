@@ -26,7 +26,7 @@ public class Hooks {
         do {
             AppiumServiceBuilder builder = new AppiumServiceBuilder();
             builder
-                        .withAppiumJS(new File("C:/Users/Hakan Batirhan.DESKTOP-KA8SOKR/node_modules/appium/build/lib/main.js"))
+                       // .withAppiumJS(new File("C:/Users/Hakan Batirhan.DESKTOP-KA8SOKR/node_modules/appium/build/lib/main.js"))
                       // .usingDriverExecutable(new File("C:/ProgramData/Microsoft/Windows/Start Menu/Programs/Node.js"))
                     .withIPAddress("127.0.0.1")
                     .usingPort(4723)
@@ -55,7 +55,6 @@ public class Hooks {
         if (scenario.isFailed()) {
             scenario.attach(screenshot, "image/png", "screenshots");
         }
-        Driver.quitAppiumDriver();
 
     }
 
