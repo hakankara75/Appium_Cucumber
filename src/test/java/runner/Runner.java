@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
                 "utilities.formatter.PrettyReports:target/cucumber-pretty-reports"
         },
         features = "src/test/resources/features",
-        glue = "stepDefinitions",
-        tags = "@HepsiBurada",
+        glue = {"stepDefinitions","runner"},
+        tags = "@n11",
         dryRun = false
 )
 public class Runner {
