@@ -8,11 +8,9 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import screens.androidScreen.N11Screen;
-import utilities.ReusableMethods;
-
 import java.time.Duration;
 
-import static utilities.Driver.driver;
+import static org.junit.Assert.*;
 import static utilities.ReusableMethods.waitToBeVisible;
 
 public class N11Steps {
@@ -47,4 +45,36 @@ public class N11Steps {
     }
 
 
+    @Given("Type {string} in the searchbox")
+    public void typeInTheSearchbox(String text) {
+        waitToBeVisible(api.searchBox, Duration.ofSeconds(20));
+        api.searchBox.click();
+        api.searchBar.sendKeys(text);
+        //api.kulaklikText.click();     //texte tiklayip da aratabiliriz ya da asagidaki enter kodu ile
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    @Then("Select the firs product")
+    public void selectTheFirsProduct() {
+        api.firstProduct.click();
+    }
+
+    @And("Click on the sepetim")
+    public void clickOnTheSepetim() {
+        api.sepetim.click();
+        api.beyaz.click();
+        api.sepeteEkle.click();
+        api.secondSepetim.click();
+
+    }
+
+    @And("Verify that {string} is visible")
+    public void verifyThatIsVisible(String text) {
+        switch (text) {
+            case "Ödemeye Geç":
+                assertTrue(api.odemeyeGecText.isDisplayed());
+                break;
+        }
+
+    }
 }

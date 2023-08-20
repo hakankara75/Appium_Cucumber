@@ -17,9 +17,9 @@ import static org.junit.Assert.assertTrue;
 public class Driver {
 
     private static UiAutomator2Options options;
-    public static AppiumDriver driver;
+    public static AndroidDriver driver;
 
-    public static AppiumDriver getDriver() {
+    public static AndroidDriver getDriver() {
 
             if (driver == null) {
                 switch (ConfigReader.getProperty("platformName")) {
@@ -52,14 +52,10 @@ public class Driver {
                 int attempt = 0;
 
                 do {
-                    try {
-                        System.out.println("Deneme #" + (attempt + 1));
-                        driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
-                        driverCreated = true;
-                        System.out.println("Android baglandi, driver atandi");
-                    } catch (MalformedURLException e) {
-                        throw new RuntimeException(e);
-                    }
+                    System.out.println("Deneme #" + (attempt + 1));
+                    driver = new AndroidDriver(options);
+                    driverCreated = true;
+                    System.out.println("Android baglandi, driver atandi");
 
                     if (!driverCreated) {
                         System.out.println("Bekleme ve yeniden deneme...");
