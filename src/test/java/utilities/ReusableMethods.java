@@ -1,6 +1,7 @@
 package utilities;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
@@ -97,25 +98,6 @@ public class ReusableMethods {
   }
 
 
-//    public static void scrollWithUiScrollable(String elementText) {
-//        AndroidDriver<MobileElement> driver = (AndroidDriver) Driver.getAppiumDriver();
-//        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+elementText+"\"))");
-//        tapOn(driver.findElementByXPath("//android.widget.TextView[@text='" + elementText + "']"));
-//    }
-
-//    public static void scrollDownToBeVisible(MobileElement element) {
-//
-//    }
-//
-//    public static void scrollUpToBeVisible(MobileElement element) {
-//
-//    }
-//
-//    public static void swipeFromElementToElement(MobileElement el1, MobileElement el2) {
-//
-//    }
-////attribute check
-
   public static void tap(AppiumDriver driver, WebElement element) {
     Point location = element.getLocation();
     Dimension size = element.getSize();
@@ -190,7 +172,58 @@ public class ReusableMethods {
     Thread.sleep(300);
   }
 
+  /**
+   * Element gorunur olmadigi surece ve sayfa sonuna gelinmedigi surece scroll down yapma metodu
+   * @param element yerine android element locati verilmeli
+   */
+  public static void scrollForMobile(WebElement element){
+    String previousPageSource="";
+    while(isElementNotEnabled(element) && isNotEndOfPage(previousPageSource)){
+      previousPageSource=driver.getPageSource();
+      performScroll();
 
+    }
+  }
+
+  /**
+   * elementi listin icine alıp, listin boyutunu olcer. list bos ise true dondurecek.scrollForMobile() ile kullanilir
+   * @param element element locate yazilmali
+   * @return true yada false doner
+   */
+  private static boolean isElementNotEnabled(WebElement element){
+    List<WebElement> elements=driver.findElements((By) element);
+    boolean enabled;
+    if (elements.size() <1) enabled = true;
+    else enabled = false;
+    return enabled;
+  }
+
+  /**
+   * bir onceki sayfa pageSource ile simdiki aynı mı diye kontrol eder
+   * @param previousPageSource
+   * @return
+   */
+  private static boolean isNotEndOfPage(String previousPageSource){
+    return ! previousPageSource.equals(driver.getPageSource());
+  }
+  public static void performScroll(){
+    Dimension size= driver.manage().window().getSize();
+    int startX= size.getWidth()/2;
+    int endX= size.getWidth()/2;
+    int startY= size.getHeight()/2;
+    int endY= (int)(size.getWidth()*0.25);
+    performScrollUsingSequence(startX, startY, endX, endY);
+  }
+  private static void performScrollUsingSequence(int startX, int startY, int endX, int endY)
+  {
+    PointerInput finger=new PointerInput(PointerInput.Kind.TOUCH, "first-finger");
+    Sequence sequence=new Sequence(finger,0)
+            .addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY))
+            .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+            .addAction(finger.createPointerMove(Duration.ofMillis(300), PointerInput.Origin.viewport(), endX, endY))
+            .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+    ((AppiumDriver)(driver)).perform(Collections.singletonList(sequence));
+  }
   private static Point getCenterOfElement(Point location, Dimension size) {
     return new Point(location.getX() + size.getWidth() / 2,
             location.getY() + size.getHeight() / 2);

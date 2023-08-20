@@ -25,4 +25,6 @@ public class N11Screen extends ApiDemosScreen{
    public WebElement secondSepetim;
    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Ödemeye Geç\")")
    public WebElement odemeyeGecText;
+   @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Huawei FreeBuds 5i Bluetooth Kulak içi Kulaklık\")")
+   public WebElement secilekUrun;
 }

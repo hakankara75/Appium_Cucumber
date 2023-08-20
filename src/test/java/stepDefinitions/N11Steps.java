@@ -8,9 +8,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import screens.androidScreen.N11Screen;
+import utilities.ReusableMethods;
+
 import java.time.Duration;
 
 import static org.junit.Assert.*;
+import static utilities.ReusableMethods.scroll;
 import static utilities.ReusableMethods.waitToBeVisible;
 
 public class N11Steps {
@@ -76,5 +79,15 @@ public class N11Steps {
                 break;
         }
 
+    }
+
+    @Then("Scroll down to the {string}")
+    public void scrollDownToThe(String element) {
+        switch (element) {
+            case "Huawei":
+            ReusableMethods.scrollForMobile(api.secilekUrun);
+
+                break;
+        }
     }
 }

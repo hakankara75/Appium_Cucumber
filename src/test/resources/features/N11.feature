@@ -6,3 +6,6 @@
       And Click on the sepetim
       And Verify that "Ödemeye Geç" is visible
 
+    Scenario: Scroll down
+      Given Type "Kulaklık" in the searchbox
+      Then Scroll down to the "Huawei"
