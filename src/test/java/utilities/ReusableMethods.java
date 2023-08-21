@@ -254,8 +254,21 @@ public class ReusableMethods {
       }else ReusableMethods.scroll(driver,1);
       break;
     }
+  }
 
+  public static void scrollTo(String textFromOutSide){
+    AppiumBy.ByAndroidUIAutomator permissionElement = new AppiumBy.ByAndroidUIAutomator("new UiScrollable"+
+            "(new UiSelector().scrollable(true).instance(0)."+
+            "scrollIntoView(new UiSelector()"+".textMatches(\""+textFromOutSide+"\").instance(0)");
+    driver.findElement(permissionElement);
+  }
 
-
+  /**
+   * bu metot UiSelector cinsinden locate dondurur
+   * @param text locate alinacak elementin text attribute icinde yazan metindir
+   * @return
+   */
+  public static By locateElementByText(String text){
+    return AppiumBy.androidUIAutomator("new UiSelector().text(\""+text+"\")");
   }
 }

@@ -1,20 +1,21 @@
 package stepDefinitions;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import screens.androidScreen.N11Screen;
 import utilities.ReusableMethods;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
+import java.util.List;
 
 import static org.junit.Assert.*;
-import static utilities.ReusableMethods.scroll;
 import static utilities.ReusableMethods.waitToBeVisible;
 
 public class N11Steps {
@@ -63,7 +64,7 @@ public class N11Steps {
 
     @Then("Select the firs product")
     public void selectTheFirsProduct() {
-        api.firstProduct.click();
+        api.firstSelectProduct.click();
     }
 
     @And("Click on the sepetim")
@@ -81,17 +82,74 @@ public class N11Steps {
             case "Ödemeye Geç":
                 assertTrue(api.odemeyeGecText.isDisplayed());
                 break;
+                case "AYNI GÜN TESLİMAT":
+                List<WebElement> ayniGunTagList= driver.findElements(ReusableMethods.locateElementByText("AYNI GÜN TESLİMAT"));
+                for (WebElement each:ayniGunTagList){
+                    assertEquals(each.getText(),"AYNI GÜN TESLİMAT");
+                }
+                break;
         }
 
+    }
+
+    @Given("Click the {string}")
+    public void clickThe(String element) {
+       switch (element) {
+            case  "Kategoriler":
+                api.kategoriler.click();
+                break;
+            case  "Otomotiv & Motosiklet":
+                api.otomotiv.click();
+                break;
+            case  "Yedek Parça":
+                api.yedekParca.click();
+                break;
+            case  "Egzoz":
+                api.egzoz.click();
+                break;
+            case  "Filtrele":
+               api.filtrele.click();
+                break;
+            case  "Teslimat Adresi Seç":
+                api.teslimatAdresi.click();
+                break;
+            case  "Şehir Seç":
+               api.sehirSec.click();
+                break;
+            case  "İlçe Seç":
+                api.ilceSec.click();
+                break;
+                case  "Sonuçları Göster":
+                api.sonuclariGoster.click();
+                break;
+                case  "Onayla":
+               api.onayla.click();
+                break;
+                case  "İstanbul":
+               api.istanbul.click();
+                break;
+                case  "Beşiktaş":
+               api.besiktas.click();
+                break;
+        }
     }
 
     @Then("Scroll down to the {string}")
     public void scrollDownToThe(String element) {
         switch (element) {
             case "Huawei":
-            ReusableMethods.scrollForMobile(api.secilekUrun);
-
+                ReusableMethods.scrollForMobile(api.firstSelectProduct);
+                break;
+            case "Qcy":
+                ReusableMethods.scrollTo("Qcy T5 Bluetooth 5.1 Kulak İçi Kulaklık");
+                break;
+                case "İstanbul":
+                ReusableMethods.scrollTo("İstanbul");
+                break;
+                case "Beşiktaş":
+                ReusableMethods.scrollTo("Beşiktaş");
                 break;
         }
     }
+
 }
