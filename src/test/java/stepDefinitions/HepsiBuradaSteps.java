@@ -43,7 +43,7 @@ public class HepsiBuradaSteps {
     public void sporGiyimBolumundeOlunduguDogrulandi() throws InterruptedException {
         assertTrue(api.sporGiyimBaslik.isDisplayed());
 
-        scroll(driver,1);
+        scroll(Driver.getDriver(),1);
     }
 
 
