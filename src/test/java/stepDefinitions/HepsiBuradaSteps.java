@@ -5,6 +5,7 @@ import io.cucumber.java.en.*;
 import screens.androidScreen.HepsiBuradaScreen;
 import utilities.Driver;
 
+import java.net.MalformedURLException;
 import java.time.Duration;
 
 import static org.junit.Assert.*;
@@ -15,8 +16,12 @@ import static utilities.ReusableMethods.waitToBeVisible;
 public class HepsiBuradaSteps {
 
     HepsiBuradaScreen api=new HepsiBuradaScreen();
+
+    public HepsiBuradaSteps() throws MalformedURLException {
+    }
+
     @Given("HepsiBurada uygulamasina gidildi")
-    public void hepsi_burada_uygulamasina_gidildi() {
+    public void hepsi_burada_uygulamasina_gidildi() throws MalformedURLException {
         Driver.getDriver();
     }
 

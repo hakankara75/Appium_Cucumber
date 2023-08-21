@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.net.MalformedURLException;
+
 public class N11Screen extends ApiDemosScreen{
    @FindBy(id = "com.dmall.mfandroid.id/tvHomeSearchBar")
    public WebElement searchBox;
@@ -27,4 +29,7 @@ public class N11Screen extends ApiDemosScreen{
    public WebElement odemeyeGecText;
    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Huawei FreeBuds 5i Bluetooth Kulak içi Kulaklık\")")
    public WebElement secilekUrun;
+
+   public N11Screen() throws MalformedURLException {
+   }
 }

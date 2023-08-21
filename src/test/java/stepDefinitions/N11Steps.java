@@ -10,6 +10,7 @@ import io.cucumber.java.en.Then;
 import screens.androidScreen.N11Screen;
 import utilities.ReusableMethods;
 
+import java.net.MalformedURLException;
 import java.time.Duration;
 
 import static org.junit.Assert.*;
@@ -19,6 +20,9 @@ import static utilities.ReusableMethods.waitToBeVisible;
 public class N11Steps {
     N11Screen api= new N11Screen();
     AndroidDriver driver;
+
+    public N11Steps() throws MalformedURLException {
+    }
 
     @Given("Click on the search box")
     public void clickOnTheSearchBox() {

@@ -9,3 +9,7 @@
     Scenario: Scroll down
       Given Type "Kulaklık" in the searchbox
       Then Scroll down to the "Huawei"
+
+    Scenario: Scroll down2
+      Given Type "Kulaklık" in the searchbox
+      Then Scroll down to the "Huawei"

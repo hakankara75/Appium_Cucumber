@@ -7,6 +7,8 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.List;
 import static utilities.Driver.driver;
@@ -20,7 +22,16 @@ import java.util.Collections;
 
 
 public class ReusableMethods {
-  static protected ApiDemosScreen api=new ApiDemosScreen();
+  static protected ApiDemosScreen api;
+
+  static {
+    try {
+      api = new ApiDemosScreen();
+    } catch (MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
   public static boolean isElementPresent(String text) {
     boolean elementFound = false;
     List<WebElement> mobileElementList = driver.findElements(AppiumBy.xpath("//android.widget.TextView[@text='" + text + "']"));

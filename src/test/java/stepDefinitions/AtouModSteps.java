@@ -8,12 +8,23 @@ import screens.androidScreen.AtouModScreen;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.net.MalformedURLException;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class AtouModSteps extends ReusableMethods {
-    static protected AtouModScreen api=new AtouModScreen();
+    static protected AtouModScreen api;
+
+    static {
+        try {
+            api = new AtouModScreen();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Given("Anasayfaya git ve kontrol et")
     public void anasayfayaGitVeKontrolEt() throws InterruptedException {
 
@@ -80,7 +91,7 @@ public class AtouModSteps extends ReusableMethods {
 
 
     @And("Daha sonra bak butonuna tikla")
-    public void dahaSonraBakButonunaTikla() throws InterruptedException {
+    public void dahaSonraBakButonunaTikla() throws InterruptedException, MalformedURLException {
 
         TouchAction touchAction = new TouchAction((PerformsTouchActions) Driver.getDriver());
         PointOption point = PointOption.point(620, 2150);

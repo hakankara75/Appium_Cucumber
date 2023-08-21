@@ -19,7 +19,7 @@ public class Driver {
     private static UiAutomator2Options options;
     public static AndroidDriver driver;
 
-    public static AndroidDriver getDriver() {
+    public static AndroidDriver getDriver() throws MalformedURLException {
 
             if (driver == null) {
                 switch (ConfigReader.getProperty("platformName")) {
@@ -53,7 +53,7 @@ public class Driver {
 
                 do {
                     System.out.println("Deneme #" + (attempt + 1));
-                    driver = new AndroidDriver(options);
+                    driver = new AndroidDriver(new URL("http://127.0.0.1:4723/"),options);
                     driverCreated = true;
                     System.out.println("Android baglandi, driver atandi");
 

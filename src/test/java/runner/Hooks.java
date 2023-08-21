@@ -11,6 +11,7 @@ import utilities.Driver;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.time.Duration;
 
 import static utilities.Driver.isAppiumServerRunning;
@@ -50,7 +51,7 @@ public class Hooks {
     }
 
     @After
-    public void tearDown(Scenario scenario) throws InterruptedException {
+    public void tearDown(Scenario scenario) throws InterruptedException, MalformedURLException {
         final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
         if (scenario.isFailed()) {
             scenario.attach(screenshot, "image/png", "screenshots");

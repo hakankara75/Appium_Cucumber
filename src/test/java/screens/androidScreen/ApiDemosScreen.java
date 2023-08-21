@@ -6,11 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.net.MalformedURLException;
 import java.time.Duration;
 
 public class ApiDemosScreen {
 
-    public ApiDemosScreen()  {
+    public ApiDemosScreen() throws MalformedURLException {
         PageFactory.initElements(new AppiumFieldDecorator(Driver.getDriver(), Duration.ofSeconds(30)),this);
     }
     @FindBy(xpath = "//android.widget.TextView[contains(@text='API')]")

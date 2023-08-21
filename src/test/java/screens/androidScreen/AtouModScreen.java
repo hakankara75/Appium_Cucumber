@@ -3,6 +3,8 @@ package screens.androidScreen;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.net.MalformedURLException;
+
 public class AtouModScreen extends ApiDemosScreen {
 
     @FindBy(xpath = "//android.widget.TextView[@text='Vos titres de transport\n" +
@@ -37,4 +39,7 @@ public class AtouModScreen extends ApiDemosScreen {
 
     @FindBy(className = "android.widget.EditText")
     public WebElement searchReseau;
+
+    public AtouModScreen() throws MalformedURLException {
+    }
 }
