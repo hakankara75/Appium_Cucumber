@@ -31,7 +31,7 @@ public class ReusableMethods {
     }
   }
 
-  public static boolean isElementPresent(String text) {
+  public static boolean isElementPresent(String text) throws MalformedURLException {
     boolean elementFound = false;
     List<WebElement> mobileElementList = Driver.getDriver().findElements(AppiumBy.xpath("//android.widget.TextView[@text='" + text + "']"));
     for (WebElement el : mobileElementList) {
@@ -53,17 +53,17 @@ public class ReusableMethods {
     }
   }
 
-  public static void tapOn(WebElement element) {
+  public static void tapOn(WebElement element) throws MalformedURLException {
     waitToBeClickable(element, Duration.ofSeconds(10));
     element.click();
   }
 
-  public static void enterText(WebElement element, String text) {
+  public static void enterText(WebElement element, String text) throws MalformedURLException {
     waitToBeClickable(element, Duration.ofSeconds(10));
     element.sendKeys(text);
   }
 
-  public static void enterText(WebElement element, String text, boolean needClear) {
+  public static void enterText(WebElement element, String text, boolean needClear) throws MalformedURLException {
     waitToBeClickable(element, Duration.ofSeconds(10));
     if (needClear) {
       element.clear();
@@ -71,7 +71,7 @@ public class ReusableMethods {
     element.sendKeys(text);
   }
 
-  public static boolean isElementPresent(WebElement mobileElement) {
+  public static boolean isElementPresent(WebElement mobileElement) throws MalformedURLException {
     boolean elementFound = false;
     waitToBeVisible(mobileElement, Duration.ofSeconds(10));
     if (mobileElement.isDisplayed()) {
@@ -80,12 +80,12 @@ public class ReusableMethods {
     return elementFound;
   }
 
-  public static void waitToBeVisible(WebElement element, Duration timeout) {
+  public static void waitToBeVisible(WebElement element, Duration timeout) throws MalformedURLException {
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
     wait.until(ExpectedConditions.visibilityOf(element));
   }
 
-  public static void waitToBeClickable(WebElement element, Duration timeout) {
+  public static void waitToBeClickable(WebElement element, Duration timeout) throws MalformedURLException {
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
     wait.until(ExpectedConditions.elementToBeClickable(element));
   }
@@ -186,7 +186,7 @@ public class ReusableMethods {
    * Element gorunur olmadigi surece ve sayfa sonuna gelinmedigi surece scroll down yapma metodu
    * @param element yerine android element locati verilmeli
    */
-  public static void scrollForMobile(WebElement element){
+  public static void scrollForMobile(WebElement element) throws MalformedURLException {
     String previousPageSource="";
     while(isElementNotEnabled(element) && isNotEndOfPage(previousPageSource)){
       previousPageSource=Driver.getDriver().getPageSource();
@@ -200,7 +200,7 @@ public class ReusableMethods {
    * @param element element locate yazilmali
    * @return true yada false doner
    */
-  private static boolean isElementNotEnabled(WebElement element){
+  private static boolean isElementNotEnabled(WebElement element) throws MalformedURLException {
     List<WebElement> elements=Driver.getDriver().findElements((By) element);
     boolean enabled;
     if (elements.size() <1) enabled = true;
@@ -213,10 +213,10 @@ public class ReusableMethods {
    * @param previousPageSource
    * @return
    */
-  private static boolean isNotEndOfPage(String previousPageSource){
+  private static boolean isNotEndOfPage(String previousPageSource) throws MalformedURLException {
     return ! previousPageSource.equals(Driver.getDriver().getPageSource());
   }
-  public static void performScroll(){
+  public static void performScroll() throws MalformedURLException {
     Dimension size= Driver.getDriver().manage().window().getSize();
     int startX= size.getWidth()/2;
     int endX= size.getWidth()/2;
@@ -224,8 +224,7 @@ public class ReusableMethods {
     int endY= (int)(size.getWidth()*0.25);
     performScrollUsingSequence(startX, startY, endX, endY);
   }
-  private static void performScrollUsingSequence(int startX, int startY, int endX, int endY)
-  {
+  private static void performScrollUsingSequence(int startX, int startY, int endX, int endY) throws MalformedURLException {
     PointerInput finger=new PointerInput(PointerInput.Kind.TOUCH, "first-finger");
     Sequence sequence=new Sequence(finger,0)
             .addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY))
@@ -239,7 +238,7 @@ public class ReusableMethods {
             location.getY() + size.getHeight() / 2);
   }
 
-  public static  void tabOnElementWithText(String text) throws InterruptedException {
+  public static  void tabOnElementWithText(String text) throws InterruptedException, MalformedURLException {
 
     List<WebElement> elements = Driver.getDriver().findElements(AppiumBy.className("android.widget.TextView"));
 
@@ -255,7 +254,7 @@ public class ReusableMethods {
     }
   }
 
-  public static void scrollTo(String textFromOutSide){
+  public static void scrollTo(String textFromOutSide) throws MalformedURLException {
     AppiumBy.ByAndroidUIAutomator permissionElement = new AppiumBy.ByAndroidUIAutomator("new UiScrollable"+
             "(new UiSelector().scrollable(true).instance(0)."+
             "scrollIntoView(new UiSelector()"+".textMatches(\""+textFromOutSide+"\").instance(0)");

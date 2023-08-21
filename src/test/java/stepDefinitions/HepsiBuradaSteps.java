@@ -26,7 +26,7 @@ public class HepsiBuradaSteps {
     }
 
     @When("Kategoriler linki tiklandi")
-    public void kategorilerLinkiTiklandi() {
+    public void kategorilerLinkiTiklandi() throws MalformedURLException {
         waitToBeVisible(api.kategoriler,Duration.ofSeconds(20));
         api.kategoriler.click();
         }
@@ -40,7 +40,7 @@ public class HepsiBuradaSteps {
     }
 
     @And("Spor Giyim bolumunde olundugu dogrulandi")
-    public void sporGiyimBolumundeOlunduguDogrulandi() throws InterruptedException {
+    public void sporGiyimBolumundeOlunduguDogrulandi() throws InterruptedException, MalformedURLException {
         assertTrue(api.sporGiyimBaslik.isDisplayed());
 
         scroll(Driver.getDriver(),1);

@@ -26,7 +26,7 @@ public class N11Steps {
     }
 
     @Given("Click on the search box")
-    public void clickOnTheSearchBox() {
+    public void clickOnTheSearchBox() throws MalformedURLException {
         waitToBeVisible(api.searchBox, Duration.ofSeconds(30));
         api.searchBox.click();
 
@@ -54,7 +54,7 @@ public class N11Steps {
 
 
     @Given("Type {string} in the searchbox")
-    public void typeInTheSearchbox(String text) {
+    public void typeInTheSearchbox(String text) throws MalformedURLException {
         waitToBeVisible(api.searchBox, Duration.ofSeconds(20));
         api.searchBox.click();
         api.searchBar.sendKeys(text);
@@ -135,7 +135,7 @@ public class N11Steps {
     }
 
     @Then("Scroll down to the {string}")
-    public void scrollDownToThe(String element) {
+    public void scrollDownToThe(String element) throws MalformedURLException {
         switch (element) {
             case "Huawei":
                 ReusableMethods.scrollForMobile(api.firstSelectProduct);

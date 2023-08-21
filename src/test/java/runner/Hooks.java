@@ -48,6 +48,15 @@ public class Hooks {
         System.out.println("server started");
 
     }
+//private AppiumDriverLocalService appiumServer = AppiumDriverLocalService.buildDefaultService();
+//    final Runtime runtime = Runtime.getRuntime();
+//    @Before
+//    public void setUp() {
+//        //it starts appium server
+//
+//        appiumServer.start();
+//    }
+
 
     @After
     public void tearDown(Scenario scenario) throws InterruptedException, MalformedURLException {
