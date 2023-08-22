@@ -13,7 +13,7 @@ import static utilities.Driver.*;
 import static utilities.ReusableMethods.scroll;
 import static utilities.ReusableMethods.waitToBeVisible;
 
-public class HepsiBuradaSteps {
+public class HepsiBuradaSteps extends Driver{
 
     HepsiBuradaScreen api=new HepsiBuradaScreen();
 
@@ -22,7 +22,7 @@ public class HepsiBuradaSteps {
 
     @Given("HepsiBurada uygulamasina gidildi")
     public void hepsi_burada_uygulamasina_gidildi() throws MalformedURLException {
-        Driver.getDriver();
+        getDriver();
     }
 
     @When("Kategoriler linki tiklandi")
@@ -43,7 +43,7 @@ public class HepsiBuradaSteps {
     public void sporGiyimBolumundeOlunduguDogrulandi() throws InterruptedException, MalformedURLException {
         assertTrue(api.sporGiyimBaslik.isDisplayed());
 
-        scroll(Driver.getDriver(),1);
+        scroll(driver,1);
     }
 
 

@@ -12,11 +12,11 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.time.Duration;
 
+import static utilities.Driver.driver;
 import static utilities.Driver.isAppiumServerRunning;
 
 
 public class Hooks {
-
     public static AppiumDriverLocalService appiumServer; //= AppiumDriverLocalService.buildDefaultService();
 
     @Before
@@ -26,8 +26,8 @@ public class Hooks {
         do {
             AppiumServiceBuilder builder = new AppiumServiceBuilder();
             builder
-                       // .withAppiumJS(new File("C:/Users/Hakan Batirhan.DESKTOP-KA8SOKR/node_modules/appium/build/lib/main.js"))
-                      // .usingDriverExecutable(new File("C:/ProgramData/Microsoft/Windows/Start Menu/Programs/Node.js"))
+                    //   .withAppiumJS(new File("C:/Users/Hakan Batirhan.DESKTOP-KA8SOKR/node_modules/appium/build/lib/main.js"))  APPIUM YOLU İÇİN
+                    // .usingDriverExecutable(new File("C:/ProgramData/Microsoft/Windows/Start Menu/Programs/Node.js"))
                     .withIPAddress("127.0.0.1")
                     .usingPort(4723)
                     .withTimeout(Duration.ofSeconds(30));
@@ -37,7 +37,6 @@ public class Hooks {
                 System.out.println("APPIUM SERVER NOT ASSIGN");
             }
             try {
-
                 appiumServer.start();
             } catch (Exception e) {
                 System.out.println("APPIUM SERVER NOT START");
@@ -48,19 +47,10 @@ public class Hooks {
         System.out.println("server started");
 
     }
-//private AppiumDriverLocalService appiumServer = AppiumDriverLocalService.buildDefaultService();
-//    final Runtime runtime = Runtime.getRuntime();
-//    @Before
-//    public void setUp() {
-//        //it starts appium server
-//
-//        appiumServer.start();
-//    }
-
 
     @After
-    public void tearDown(Scenario scenario) throws InterruptedException, MalformedURLException {
-        final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+    public void tearDown(Scenario scenario) throws InterruptedException {
+        final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         if (scenario.isFailed()) {
             scenario.attach(screenshot, "image/png", "screenshots");
         }

@@ -11,22 +11,24 @@ import utilities.ReusableMethods;
 import java.net.MalformedURLException;
 import java.time.Duration;
 
+import static java.time.Duration.*;
 import static org.junit.Assert.*;
+import static utilities.Driver.driver;
 
 public class ApiDemosSteps extends ReusableMethods {
 
     @Given("Application yuklendi")
     public void application_yuklendi() throws MalformedURLException, InterruptedException {
-        Driver.getDriver();
+
 
     }
     @When("Kullanici anasayfaya geldi")
     public void kullanici_anasayfaya_geldi() throws MalformedURLException, InterruptedException {
-      WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
+//      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
-      WebElement apiTitle= wait.until(ExpectedConditions.visibilityOfElementLocated((By) api.apiTitle));
+//      WebElement apiTitle= wait.until(ExpectedConditions.visibilityOfElementLocated((By) api.apiTitle));
 
-  assertTrue(apiTitle.isDisplayed());
+  assertTrue(api.apiTitle.isDisplayed());
     }
     @When("Kullanici Api Demos butonuna tikladi")
     public void kullanici_api_demos_butonuna_tikladi() {

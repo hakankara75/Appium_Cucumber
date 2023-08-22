@@ -9,10 +9,12 @@ import utilities.Driver;
 import java.net.MalformedURLException;
 import java.time.Duration;
 
+import static utilities.Driver.driver;
+
 public class ApiDemosScreen {
 
     public ApiDemosScreen() throws MalformedURLException {
-        PageFactory.initElements(new AppiumFieldDecorator(Driver.getDriver(), Duration.ofSeconds(30)),this);
+        PageFactory.initElements(new AppiumFieldDecorator(driver, Duration.ofSeconds(30)),this);
     }
     @FindBy(xpath = "//android.widget.TextView[contains(@text='API')]")
     public WebElement apiTitle;
