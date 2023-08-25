@@ -19,6 +19,8 @@ import screens.androidScreen.ApiDemosScreen;
 
 import java.util.Collections;
 
+import static utilities.Driver.driver;
+
 
 public class ReusableMethods {
   static protected ApiDemosScreen api;
@@ -33,7 +35,7 @@ public class ReusableMethods {
 
   public static boolean isElementPresent(String text) throws MalformedURLException {
     boolean elementFound = false;
-    List<WebElement> mobileElementList = Driver.getDriver().findElements(AppiumBy.xpath("//android.widget.TextView[@text='" + text + "']"));
+    List<WebElement> mobileElementList = driver.findElements(AppiumBy.xpath("//android.widget.TextView[@text='" + text + "']"));
     for (WebElement el : mobileElementList) {
       if (el.getText().equals(text)) {
         waitToBeVisible(el, Duration.ofSeconds(10));
@@ -81,12 +83,12 @@ public class ReusableMethods {
   }
 
   public static void waitToBeVisible(WebElement element, Duration timeout) throws MalformedURLException {
-    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
+    WebDriverWait wait = new WebDriverWait(driver, timeout);
     wait.until(ExpectedConditions.visibilityOf(element));
   }
 
   public static void waitToBeClickable(WebElement element, Duration timeout) throws MalformedURLException {
-    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
+    WebDriverWait wait = new WebDriverWait(driver, timeout);
     wait.until(ExpectedConditions.elementToBeClickable(element));
   }
 
@@ -189,7 +191,7 @@ public class ReusableMethods {
   public static void scrollForMobile(WebElement element) throws MalformedURLException {
     String previousPageSource="";
     while(isElementNotEnabled(element) && isNotEndOfPage(previousPageSource)){
-      previousPageSource=Driver.getDriver().getPageSource();
+      previousPageSource=driver.getPageSource();
       performScroll();
 
     }
@@ -201,7 +203,7 @@ public class ReusableMethods {
    * @return true yada false doner
    */
   private static boolean isElementNotEnabled(WebElement element) throws MalformedURLException {
-    List<WebElement> elements=Driver.getDriver().findElements((By) element);
+    List<WebElement> elements=driver.findElements((By) element);
     boolean enabled;
     if (elements.size() <1) enabled = true;
     else enabled = false;
@@ -214,10 +216,10 @@ public class ReusableMethods {
    * @return
    */
   private static boolean isNotEndOfPage(String previousPageSource) throws MalformedURLException {
-    return ! previousPageSource.equals(Driver.getDriver().getPageSource());
+    return ! previousPageSource.equals(driver.getPageSource());
   }
   public static void performScroll() throws MalformedURLException {
-    Dimension size= Driver.getDriver().manage().window().getSize();
+    Dimension size= driver.manage().window().getSize();
     int startX= size.getWidth()/2;
     int endX= size.getWidth()/2;
     int startY= size.getHeight()/2;
@@ -231,7 +233,7 @@ public class ReusableMethods {
             .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
             .addAction(finger.createPointerMove(Duration.ofMillis(300), PointerInput.Origin.viewport(), endX, endY))
             .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-    ((AppiumDriver)(Driver.getDriver())).perform(Collections.singletonList(sequence));
+    ((AppiumDriver)(driver)).perform(Collections.singletonList(sequence));
   }
   private static Point getCenterOfElement(Point location, Dimension size) {
     return new Point(location.getX() + size.getWidth() / 2,
@@ -240,7 +242,7 @@ public class ReusableMethods {
 
   public static  void tabOnElementWithText(String text) throws InterruptedException, MalformedURLException {
 
-    List<WebElement> elements = Driver.getDriver().findElements(AppiumBy.className("android.widget.TextView"));
+    List<WebElement> elements = driver.findElements(AppiumBy.className("android.widget.TextView"));
 
     for (WebElement element : elements){
       System.out.println("element.getText() = " + element.getText());
@@ -249,7 +251,7 @@ public class ReusableMethods {
 
         element.click();
         break;
-      }else ReusableMethods.scroll(Driver.getDriver(),1);
+      }else ReusableMethods.scroll(driver,1);
       break;
     }
   }
@@ -258,7 +260,7 @@ public class ReusableMethods {
     AppiumBy.ByAndroidUIAutomator permissionElement = new AppiumBy.ByAndroidUIAutomator("new UiScrollable"+
             "(new UiSelector().scrollable(true).instance(0)."+
             "scrollIntoView(new UiSelector()"+".textMatches(\""+textFromOutSide+"\").instance(0)");
-    Driver.getDriver().findElement(permissionElement);
+    driver.findElement(permissionElement);
   }
 
   /**
