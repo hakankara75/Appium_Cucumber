@@ -18,7 +18,7 @@ public class Driver {
 
     public UiAutomator2Options options;
     public static AppiumDriver driver;
-    public AppiumDriver getDriver() {
+    public static AppiumDriver getDriver() {
 
         AppiumDriver driver = null;
 
