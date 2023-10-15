@@ -29,16 +29,11 @@ public class Hooks {
                     .withIPAddress("127.0.0.1")
                     .usingPort(4723)
                     .withTimeout(Duration.ofSeconds(30));
-            try {
+
                 appiumServer = AppiumDriverLocalService.buildService(builder);
-            } catch (Exception e) {
-                System.out.println("APPIUM SERVER NOT ASSIGN");
-            }
-            try {
+
                 appiumServer.start();
-            } catch (Exception e) {
-                System.out.println("APPIUM SERVER NOT START");
-            }
+
 
         } while (!(isAppiumServerRunning("localhost", 4723)));
 

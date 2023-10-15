@@ -4,7 +4,8 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utils.Driver;
+import utilities.Driver;
+
 
 public class ViewsScreen {
     public ViewsScreen(){

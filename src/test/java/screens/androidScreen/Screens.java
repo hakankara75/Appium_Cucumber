@@ -1,8 +1,8 @@
 package screens.androidScreen;
 
-import screens.androidScreen.*;
+import java.net.MalformedURLException;
 
-public class reens {
+public class Screens {
     public Screens(){
     }
     private ApiDemosScreen apiDemosScreen;
@@ -14,7 +14,7 @@ public class reens {
     private DragAndDropScreen dragAndDropScreen;
     private DateWidgetsScreen dateWidgetsScreen;
 
-    public ApiDemosScreen apiDemosScreen(){
+    public ApiDemosScreen apiDemosScreen() throws MalformedURLException {
         if (apiDemosScreen == null){
             apiDemosScreen = new ApiDemosScreen();
         }

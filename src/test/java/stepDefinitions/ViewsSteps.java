@@ -12,17 +12,17 @@ public class ViewsSteps extends ReusableMethods {
 
     @Then("Kullanici Views butonuna tikladi")
     public void kullaniciViewsButonunaTikladi() {
-       // tapOn( api.viewLink);
+        tapOn( api.viewLink);
     }
 
     @And("Kullanici Views ekranina geldi")
     public void kullaniciViewsEkraninaGeldi() {
-      //  assertTrue(api.viewLink.isDisplayed());
+       assertTrue(api.viewLink.isDisplayed());
     }
 
     @Then("Kullanici drag and drop butonuna tikladi")
     public void kullaniciDragAndDropButonunaTikladi() {
-     //   tapOn(api.dragAndDrop);
+      tapOn(api.dragAndDrop);
     }
     @When("Kullanici birinci topu ikinci topun ustune tikladi")
     public void kullaniciBirinciTopuIkinciTopunUstuneTikladi() {
