@@ -60,4 +60,38 @@ public class Hooks {
         }
 
     }
+        /*
+    @BeforeAll
+    public static void openCMD() throws IOException{
+
+        try{
+            String command = "cmd /c start appium";
+            //Starting the appium
+            Process process= Runtime.getRuntime().exec(command);
+            System.out.println("prosess is Alive "+process.isAlive());
+
+        }catch (Exception e){
+            System.out.println("Error : "+e);
+        }
+        ReusableMethods.wait(10);
+    }
+    */
+    /* Allure dependency yi kaldırdık. çalışmıyor
+    @AfterAll
+    public static void openAllure() throws IOException{
+        try{
+            String command = "cmd /c allure serve allure-results";
+            //Starting the appium
+            Process process= Runtime.getRuntime().exec(command);
+            System.out.println("prosess is Alive "+process.isAlive());
+
+        }catch (Exception e){
+            System.out.println("Error : "+e);
+        }
+        ReusableMethods.wait(10);
+
+    }
+
+ */
+
 }
