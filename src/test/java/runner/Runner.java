@@ -8,7 +8,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty",
                 "json:target/cucumber.json",
-                "utilities.formatter.PrettyReports:target/cucumber-pretty-reports"
+                "utilities.formatter.PrettyReports:target/cucumber-pretty-reports",
+                "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"
         },
         features = "src/test/resources/features",
         glue = {"stepDefinitions","runner"},

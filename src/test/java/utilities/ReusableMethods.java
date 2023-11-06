@@ -544,5 +544,9 @@ public class ReusableMethods {
             .moveTo(PointOption.point(1052, 1016))
             .release()
             .perform();
+
+    String text= "Selenium Cucumber ile otomasyon testleri yapmak @ çok kolay .com.";
+
+
   }
 }
