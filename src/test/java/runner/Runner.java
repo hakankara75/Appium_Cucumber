@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty",
                 "json:target/cucumber.json",
                 "utilities.formatter.PrettyReports:target/cucumber-pretty-reports",
-                "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"
+                "io.qameta.allure.cucumber6jvm.AllureCucumber7Jvm"
         },
         features = "src/test/resources/features",
         glue = {"stepDefinitions","runner"},
