@@ -1,7 +1,11 @@
 package utilities;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.PerformsTouchActions;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -486,5 +490,59 @@ public class ReusableMethods {
     System.out.println("expectedElementSize = " + expectedElementSize);
 
     Assert.assertEquals(actualElementSize , expectedElementSize);
+  }
+
+  public static void touchAction(int a,int b,int c,int d) {
+
+    TouchAction action = new TouchAction<>((PerformsTouchActions) Driver.getDriver());
+    action.press(PointOption.point(a, b))
+            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+            .moveTo(PointOption.point(c, d)).release().perform();
+  }
+  public static void touchActionClick(int a,int b) {
+
+    TouchAction action = new TouchAction<>((PerformsTouchActions) Driver.getDriver());
+    action.press(PointOption.point(a, b))
+            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+            .release().perform();
+  }
+  public static void koordinatTiklama(int xDegiskeni,int yDegiskeni,int bekleme) throws InterruptedException {
+    TouchAction action=new TouchAction<>((PerformsTouchActions) Driver.getDriver());
+    action.press(PointOption.point(xDegiskeni,yDegiskeni)).release().perform();
+    Thread.sleep(bekleme);
+  }
+  public static void screenScrollDown(int wait){
+    TouchAction action=new TouchAction<>((PerformsTouchActions) Driver.getDriver());
+    action.press(PointOption.point(471,1371))
+            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(wait)))
+            .moveTo(PointOption.point(471,186))
+            .release()
+            .perform();
+  }
+
+  public static void screenScrollUp(int wait){
+    TouchAction action=new TouchAction<>((PerformsTouchActions) Driver.getDriver());
+    action.press(PointOption.point(1052,1016))
+            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(wait)))
+            .moveTo(PointOption.point(31,1016))
+            .release()
+            .perform();
+  }
+  public static void screenScrollRight(int wait) {
+    TouchAction action = new TouchAction<>((PerformsTouchActions) Driver.getDriver());
+    action.press(PointOption.point(1052, 1016))
+            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(wait)))
+            .moveTo(PointOption.point(31, 1016))
+            .release()
+            .perform();
+  }
+
+  public static void screenScrollLeft(int wait) {
+    TouchAction action = new TouchAction<>((PerformsTouchActions) Driver.getDriver());
+    action.press(PointOption.point(31, 1016))
+            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(wait)))
+            .moveTo(PointOption.point(1052, 1016))
+            .release()
+            .perform();
   }
 }

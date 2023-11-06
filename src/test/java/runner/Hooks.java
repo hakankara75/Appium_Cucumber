@@ -2,20 +2,33 @@ package runner;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
+import io.cucumber.java.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import utilities.ReusableMethods;
 import java.io.IOException;
 import java.time.Duration;
-
 import static utilities.Driver.driver;
 import static utilities.Driver.isAppiumServerRunning;
 
 
 public class Hooks {
     public static AppiumDriverLocalService appiumServer; //= AppiumDriverLocalService.buildDefaultService();
+
+    @BeforeAll
+    public static void openCMD() throws IOException{
+
+        try{
+            String command = "cmd /c start appium";
+            //Starting the appium
+            Process process= Runtime.getRuntime().exec(command);
+            System.out.println("prosess is Alive "+process.isAlive());
+
+        }catch (Exception e){
+            System.out.println("Error : "+e);
+        }
+        ReusableMethods.wait(10);
+    }
 
     @Before
     public void setUp() throws InterruptedException {
@@ -60,23 +73,10 @@ public class Hooks {
         }
 
     }
-        /*
-    @BeforeAll
-    public static void openCMD() throws IOException{
 
-        try{
-            String command = "cmd /c start appium";
-            //Starting the appium
-            Process process= Runtime.getRuntime().exec(command);
-            System.out.println("prosess is Alive "+process.isAlive());
 
-        }catch (Exception e){
-            System.out.println("Error : "+e);
-        }
-        ReusableMethods.wait(10);
-    }
-    */
-    /* Allure dependency yi kaldırdık. çalışmıyor
+
+ //Allure dependency yi kaldırdık. çalışmıyor
     @AfterAll
     public static void openAllure() throws IOException{
         try{
@@ -92,6 +92,7 @@ public class Hooks {
 
     }
 
- */
+
+
 
 }
