@@ -545,8 +545,5 @@ public class ReusableMethods {
             .release()
             .perform();
 
-    String text= "Selenium Cucumber ile otomasyon testleri yapmak @ çok kolay .com.";
-
-
   }
 }

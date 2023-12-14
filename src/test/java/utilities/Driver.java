@@ -6,17 +6,13 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URL;
-import java.time.Duration;
-
 
 public class Driver {
 
-    public UiAutomator2Options options;
+
     public static AppiumDriver driver;
     public static AppiumDriver getDriver() {
 
